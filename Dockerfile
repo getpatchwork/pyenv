@@ -45,8 +45,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libssl-dev \
     zlib1g-dev
 
-RUN pyenv install 3.6 && \
-    pyenv install 3.7 && \
+RUN pyenv install 3.7 && \
     pyenv install 3.8 && \
     pyenv install 3.9 && \
     pyenv install 3.10 && \
