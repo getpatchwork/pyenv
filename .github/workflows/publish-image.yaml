@@ -22,4 +22,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: getpatchwork/pyenv:latest
+          tags: ${{ env.REGISTRY }}/${{ github.repository }}:latest
