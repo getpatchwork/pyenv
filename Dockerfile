@@ -57,8 +57,7 @@ RUN pyenv install 3.7 && \
             \( -type d -a \( -name test -o -name tests -o -name idle_test \) \) \
             -o \( -type f -a \( -name '*.pyc' -o -name '*.pyo' -o -name '*.a' \) \) \
             -o \( -type f -a -name 'wininst-*.exe' \) \
-        \) -exec rm -rf '{}' +  && \
-    pip install tox tox-pyenv
+        \) -exec rm -rf '{}' +
 
 # ---
 
