@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libffi-dev \
     libreadline-dev \
     libsqlite3-dev \
+    default-libmysqlclient-dev \
     libssl-dev \
     zlib1g-dev
 
