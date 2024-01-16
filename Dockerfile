@@ -1,27 +1,29 @@
-FROM ubuntu:20.04 AS base
+FROM ubuntu:22.04 AS base
 
 ENV LANG="C.UTF-8"
 ENV LC_ALL="C.UTF-8"
 ENV PATH="/opt/pyenv/shims:/opt/pyenv/bin:$PATH"
 ENV PYENV_ROOT="/opt/pyenv"
 ENV PYENV_SHELL="bash"
+ENV DEBIAN_FRONTEND=noninteractive
 
 # runtime dependencies
 RUN apt-get update --quiet && \
     apt-get install -y --no-install-recommends \
-        bzip2 \
-        ca-certificates \
         curl \
+        ca-certificates \
         git \
-        libexpat1 \
-        libffi7 \
-        libmpdec2 \
-        libncursesw5 \
-        libncursesw6 \
-        libreadline5 \
+        libbz2-1.0 \
+        libffi8 \
+        #libncursesw5 \
+        libreadline8 \
         libsqlite3-0 \
-        libssl1.1 \
-        lzma \
+        libssl3 \
+        #libxml2 \
+        #libxmlsec1 \
+        liblzma5 \
+        #tk \
+        xz-utils \
         zlib1g
 
 RUN curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash && \
@@ -33,24 +35,28 @@ RUN curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-instal
 FROM base as build
 
 # builder dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    ca-certificates \
-    curl \
-    git \
-    libbz2-dev \
-    libffi-dev \
-    libreadline-dev \
-    libsqlite3-dev \
-    default-libmysqlclient-dev \
-    libssl-dev \
-    zlib1g-dev
+RUN apt-get update --quiet && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        curl \
+        libbz2-dev \
+        libffi-dev \
+        liblzma-dev \
+        #libncursesw5-dev \
+        libreadline-dev \
+        libsqlite3-dev \
+        libssl-dev \
+        #libxml2-dev \
+        #libxmlsec1-dev \
+        #tk-dev \
+        xz-utils \
+        zlib1g-dev
 
-RUN pyenv install 3.7 && \
-    pyenv install 3.8 && \
+RUN pyenv install 3.8 && \
     pyenv install 3.9 && \
     pyenv install 3.10 && \
     pyenv install 3.11 && \
+    pyenv install 3.12 && \
     pyenv global $(pyenv versions --bare | tac) && \
     pyenv versions && \
     find ${PYENV_ROOT}/versions -depth \
