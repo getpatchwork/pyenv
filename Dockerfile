@@ -52,11 +52,11 @@ RUN apt-get update --quiet && \
         xz-utils \
         zlib1g-dev
 
-RUN pyenv install 3.8 && \
-    pyenv install 3.9 && \
+RUN pyenv install 3.9 && \
     pyenv install 3.10 && \
     pyenv install 3.11 && \
     pyenv install 3.12 && \
+    pyenv install 3.13 && \
     pyenv global $(pyenv versions --bare | tac) && \
     pyenv versions && \
     find ${PYENV_ROOT}/versions -depth \
