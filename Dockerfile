@@ -1,5 +1,11 @@
 FROM ubuntu:22.04 AS base
 
+LABEL org.opencontainers.image.title="pyenv (Patchwork development)"
+LABEL org.opencontainers.image.description="pyenv container for use in Patchwork development and CI"
+LABEL org.opencontainers.image.source="https://github.com/getpatchwork/pyenv"
+LABEL org.opencontainers.image.documentation="https://patchwork.readthedocs.io/en/latest/"
+LABEL org.opencontainers.image.licenses=GPL
+
 ENV LANG="C.UTF-8"
 ENV LC_ALL="C.UTF-8"
 ENV PATH="/opt/pyenv/shims:/opt/pyenv/bin:$PATH"
