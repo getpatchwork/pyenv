@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS base
+FROM ubuntu:24.04 AS base
 
 LABEL org.opencontainers.image.title="pyenv (Patchwork development)"
 LABEL org.opencontainers.image.description="pyenv container for use in Patchwork development and CI"
