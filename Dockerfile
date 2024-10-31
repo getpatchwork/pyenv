@@ -38,7 +38,7 @@ RUN curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-instal
 
 # ---
 
-FROM base as build
+FROM base AS build
 
 # builder dependencies
 RUN apt-get update --quiet && \
